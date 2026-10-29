@@ -1,0 +1,14 @@
+{
+  "name": "careclaim",
+  "private": true,
+  "description": "CareClaim: frontend + middleware + backend in one repo",
+  "scripts": {
+    "install:all": "npm install && npm --prefix backend install && npm --prefix middleware install && npm --prefix frontend install",
+    "dev": "concurrently -k -n backend,middleware,frontend -c blue,green,magenta \"npm --prefix backend run dev\" \"npm --prefix middleware run dev\" \"npm --prefix frontend run dev\"",
+    "typecheck": "npm --prefix backend run typecheck && npm --prefix middleware exec tsc -- --noEmit && npm --prefix frontend exec tsc -- --noEmit",
+    "build": "npm --prefix backend run build && npm --prefix middleware run build && npm --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
